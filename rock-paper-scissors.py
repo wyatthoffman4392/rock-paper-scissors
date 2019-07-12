@@ -9,9 +9,8 @@ import random
 
 # Main Method
 def main():
-    print('Welcome to Rock, Paper, Scissors!')
-    print('---------------------------------')
-    pName = playerInfo()
+    login()
+    pName = playerData()
     pChoice = playerChoice()
     cChoice = cpuChoice()
     outcome(pName, pChoice, cChoice)
@@ -32,12 +31,29 @@ def main():
             break
 
 # Other Methods
-def mainMenu():
-    gameOptions = ['New Game', '']
+def login():
+    print('Welcome to Rock, Paper, Scissors!')
+    print('---------------------------------')
+    playerType = input('New or Existing Player? (Press N for New or E for Existing): ')
+    if playerType == 'N':
+        playerData()
 
-def playerInfo():
-    playerData = []
-    newPlayer = input('Player 1 input your name')
+
+def playerData():
+    players = {}
+    while True:
+        newPlayer = input('Input your Username: ')
+        if newPlayer in players:
+            print('Username already exists')
+            continue
+            while True:
+            password = input('Input your Password (Minimum 8 Characters): ')
+            if len(password) < 8:
+                print("Password did not meet 8 character requirement")
+                continue
+            else:
+                break
+
     return playerData[1]
 
 def playerChoice():
